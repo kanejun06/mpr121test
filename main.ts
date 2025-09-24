@@ -1,8 +1,6 @@
-
-//% color=#008080 icon="\uf192" block="MPR121"
 namespace MPR121 {
     // ====== I2C / レジスタ定義 ======
-    let I2C_ADDR = 0x5A
+    let I2C_ADDR = 0x5B
     const REG_TOUCH_STATUS_L = 0x00
     const REG_TOUCH_STATUS_H = 0x01
     const REG_ECR = 0x5E
@@ -201,8 +199,8 @@ namespace MPR121 {
     //% weight=69
     export function onReleased(key: Key, handler: () => void) {
         startIfNeeded()
-        const value = ((key as number) << 4) | EVT_RELEASED
-        control.onEvent(EVT_SRC, value, handler)
+        const value2 = ((key as number) << 4) | EVT_RELEASED
+        control.onEvent(EVT_SRC, value2, handler)
     }
 
     /**
@@ -236,12 +234,12 @@ namespace MPR121 {
     //% release.min=0 release.max=255 release.defl=6
     //% weight=88
     export function setThreshold(key: Key, touch: number, release: number) {
-        const k = key as number
+        const m = key as number
         const t = Math.max(0, Math.min(255, touch | 0))
         const r = Math.max(0, Math.min(255, release | 0))
         applySafely(() => {
-            writeReg(REG_TTH(k), t)
-            writeReg(REG_RTH(k), r)
+            writeReg(REG_TTH(m), t)
+            writeReg(REG_RTH(m), r)
         })
     }
 
@@ -253,12 +251,12 @@ namespace MPR121 {
     //% release.min=0 release.max=255 release.defl=6
     //% weight=87
     export function setAllThresholds(touch: number, release: number) {
-        const t = Math.max(0, Math.min(255, touch | 0))
-        const r = Math.max(0, Math.min(255, release | 0))
+        const u = Math.max(0, Math.min(255, touch | 0))
+        const s = Math.max(0, Math.min(255, release | 0))
         applySafely(() => {
-            for (let k = 0; k < 12; k++) {
-                writeReg(REG_TTH(k), t)
-                writeReg(REG_RTH(k), r)
+            for (let n = 0; n < 12; n++) {
+                writeReg(REG_TTH(n), u)
+                writeReg(REG_RTH(n), s)
             }
         })
     }
