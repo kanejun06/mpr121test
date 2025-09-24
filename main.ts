@@ -52,9 +52,9 @@ namespace MPR121 {
     }
 
     export enum I2CAddress {
-        //% block="0x5A (default)"
+        //% block="0x5A"
         Addr_0x5A = 0x5A,
-        //% block="0x5B"
+        //% block="0x5B(default)"
         Addr_0x5B = 0x5B,
         //% block="0x5C"
         Addr_0x5C = 0x5C,
@@ -143,7 +143,7 @@ namespace MPR121 {
     // ====== 公開ブロック ======
 
     /**
-     * MPR121 の I2C アドレスを設定します（既定 0x5A）。
+     * MPR121 の I2C アドレスを設定します（既定 0x5B）。
      */
     //% blockId=mpr121_set_addr block="MPR121 の I2C アドレスを %addr に設定する"
     //% weight=95
